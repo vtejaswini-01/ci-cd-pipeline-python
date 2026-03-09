@@ -1,4 +1,4 @@
-name: Python CI Pipeline
+name: Python CI/CD Pipeline
 
 on:
   push:
@@ -6,6 +6,7 @@ on:
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -27,3 +28,14 @@ jobs:
     - name: Run Tests
       run: |
         pytest
+
+    # BUILD STAGE
+    - name: Build Application
+      run: |
+        echo "Building application..."
+        python app.py > output.txt
+
+    # DEPLOY STAGE
+    - name: Deploy Application
+      run: |
+        echo "Application deployed successfully!"
